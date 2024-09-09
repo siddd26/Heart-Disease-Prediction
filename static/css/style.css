@@ -1,0 +1,43 @@
+.form{
+    display: flex;
+    justify-content: center;   
+}
+form .row{
+    margin: 2px;
+    padding: 2px 10px;
+}
+.col-5 input, .col-5 select{
+    width:100%;
+    /* align-items: center; */
+    /* margin: 0px 3px; */
+}
+
+.ha{
+    display: flex;
+    justify-content: center;
+}
+
+.slider-label{
+    display: flex;
+    justify-content: start;
+}
+
+#slider-value{
+    width: 15px;
+    margin-bottom: 0px;
+}
+
+form input, form select{
+
+    padding: 1px 2px;
+}
+
+form .submit{
+    display: flex;
+    justify-content: center;
+    margin: 7px;
+}
+form .submit input{
+    /* width: auto; */
+    padding: 5px;
+}

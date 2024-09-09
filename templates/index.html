@@ -1,67 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Heart Disease Prediction</title>
 </head>
+
 <body>
-    <form>
-        <input name="Age" type="number" placeholder="Age">
-        <select name="Gender" placeholder="asd">
-            <option value="select">Select your Gender</option>
-            <option value="1">Male</option>
-            <option value="0">Female</option>
-        </select>
-        <input type="number" name="cholesterol" id="" placeholder="Cholesterol">
-        <input type="number" name="blood-pressure" id="" placeholder="Blood Pressure">
-        <input type="number" name="heart-rate" id="" placeholder="Heart Rate">
-        <input type="number" name="blood-sugar" id="" placeholder="Blood Sugar Level">
-        stress lvl
-        <input type="range" min="1" max="10" value="10" class="slider" id="myRange">
-        <br>
-        <input type="radio" name="chest-pain-type" value="0">
-        <label for="type1">Typical Angina</label><br>
-        <input type="radio" name="chest-pain-type" value="1">
-        <label for="type2">Atypical Angina</label><br>
-        <input type="radio" name="chest-pain-type" value="2">
-        <label for="type3">Non-Anginal</label><br>
-        <input type="radio" name="chest-pain-type" value="3">
-        <label for="type4">Asymptomatic</label>
-        <br>
-        <select name="family-history" placeholder="">
-            <option value="select">Select an Option</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-        <select name="smoking" placeholder="">
-            <option value="select">Select an Option</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-        <select name="alcohol" placeholder="">
-            <option value="select">Select an Option</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    
+    <div class="container justify-content-center align-items-center">
+        <div class="header">
+            <p class="text-center display-5">Heart Disease Prediction Model</p>
+        </div>
+
+        <div class="form">
+            <form action="{{url_for('predict')}}" method="POST">
+                <div class="row justify-content-around">
+                    <div class="age col-5">
+                        <!-- <label name="age">Enter your Age:</label> -->
+                        <input name="age" type="number" placeholder="Enter your Age" required>
+                    </div>
+                    <div class="gender col-5">
+                        <!-- <label name="age">Enter your Gender:</label> -->
+                        <select name="gender" placeholder="" required>
+                            <option value="select">Select your Gender</option>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-5">
+                        <!-- <label name="cholesterol">Enter your Cholesterol Level:</label> -->
+                        <input type="number" name="cholesterol" id="" placeholder="Cholesterol" required>
+                    </div>
+                    <div class="col-5">
+                        <!-- <label name="blood-pressure">Enter your Blood Pressure Level:</label> -->
+                        <input type="number" name="blood-pressure" id="" placeholder="Blood Pressure" required>
+                    </div>
+                </div>
+
+                <div class="row justify-content-around">
+                    <div class="col-5">
+                        <!-- <label name="heart-rate">Enter your Heart Rate:</label> -->
+                        <input type="number" name="heart-rate" id="" placeholder="Heart Rate" required>
+                    </div>
+                    <div class="col-5">
+                        <!-- <label name="blood-sugar">Enter your Blood Sugar Level:</label> -->
+                        <input type="number" name="blood-sugar" id="" placeholder="Blood Sugar Level" required>
+                    </div>
+                </div>
+                <div class="row justify-content-around align-items-end">
+                    <div class="col-5">
+                        <label name="age">Number of Exercise Hours:</label>
+                        <input name="exercise-hours" type="number" placeholder="Exercise Hours" required>
+                    </div>
+                    <div class="col-5 slider">
+                        <div class="slider-label">
+                            <div class="col-9"><label name="age">Scale your Stress Level: </label></div>
+                            <div class="col-2">
+                                <p id="slider-value"></p>
+                            </div>
+                        </div>
+                        <input name="stress-level" type="range" min="1" max="10" value="1" id="myRange" required>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <label name="age">Select the type of Chest Pain</label><br>
+                        <input type="radio" name="chest-pain-type" value="0" required>
+                        <label for="type1">Typical Angina</label><br>
+                        <input type="radio" name="chest-pain-type" value="1" required>
+                        <label for="type2">Atypical Angina</label><br>
+                        <input type="radio" name="chest-pain-type" value="2" required>
+                        <label for="type3">Non-Anginal</label><br>
+                        <input type="radio" name="chest-pain-type" value="3" required>
+                        <label for="type4">Asymptomatic</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center text-center">
+                    <div class="col-auto">
+                        <label name"family-history">Do you have a family history of Heart Disease?</label><br>
+                        <select name="family-history" placeholder="" required>
+                            <option value="select">Select an Option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-around text-center">
+                    <div class="col-6">
+                        <label name"smoking">Do you Smoke?</label><br>
+                        <select name="smoking" placeholder="" required>
+                            <option value="select">Select an Option</option>
+                            <option value="2">Never</option>
+                            <option value="1">Former</option>
+                            <option value="0">Current</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label name"alcohol">Describe your alcohol consumption</label><br>
+                        <select name="alcohol" placeholder="" required>
+                            <option value="select">Select an Option</option>
+                            <option value="0">Frequently</option>
+                            <option value="1">Occasionally</option>
+                            <option value="2">I don't drink.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-around text-center">
+                    <div class="col-6">
+                        <label name"Obese_Yes">Are you Obese?</label><br>
+                        <select name="Obese_Yes" placeholder="" required>
+                            <option value="select">Select an Option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                
+                    <div class="col-6">
+                        <label name"">Are you diabetic?</label><br>
+                        <select name="Diabetes_Yes" placeholder="" required>
+                            <option value="select">Select an Option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <label name"">Exercise Induced Angina</label><br>
+                        <select name="Exercise Induced Angina_Yes" placeholder="" required>
+                            <option value="select">Select an Option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="submit">
+                    <input class="submit m-auto" type="submit">
+                </div>
 
 
+            </form>
+        </div>
+        {{prediction_txt}}
+    </div>
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("slider-value");
+        output.innerHTML = slider.value; // Display the default slider value
 
-
-
-        <!-- Enter age: 22
-        Enter cholesterol level: 150
-        Enter blood pressure: 100
-        Enter heart rate: 100
-        Enter smoking (1 for Yes, 0 for No): 0
-        Enter alcohol intake (1 for Yes, 0 for No): 0
-        Enter exercise hours per week: 4
-        Enter stress level (1-10): 10
-        Enter blood sugar level: 150
-        Enter chest pain type (0 for Typical Angina, 1 for Atypical Angina, 2 for Non-Anginal Pain, 3 for Asymptomatic): 3
-        Enter gender (1 for Male, 0 for Female): 1
-        Enter family history of heart disease (1 for Yes, 0 for No) -->
-    </form>
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function () {
+            output.innerHTML = this.value;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
