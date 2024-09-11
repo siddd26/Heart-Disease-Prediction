@@ -13,17 +13,17 @@
 <body>
     <div class="container justify-content-center align-items-center">
         <div class="header">
-            <p class="text-center display-5">Heart Disease Prediction Model</p>
+            <h1 class="text-center display-6">Heart Disease Prediction Model</h1>
         </div>
 
         <div class="form">
             <form action="{{url_for('predict')}}" method="POST">
                 <div class="row justify-content-around">
-                    <div class="age col-5">
+                    <div class="age col-12 col-md-5">
                         <!-- <label name="age">Enter your Age:</label> -->
                         <input name="Age" type="number" placeholder="Enter your Age" required>
                     </div>
-                    <div class="gender col-5">
+                    <div class="gender col-12 col-md-5">
                         <!-- <label name="age">Enter your Gender:</label> -->
                         <select name="gender" placeholder="" required>
                             <option value="select">Select your Gender</option>
@@ -33,32 +33,32 @@
                     </div>
                 </div>
                 <div class="row justify-content-around">
-                    <div class="col-5">
+                    <div class="col-12 col-md-5">
                         <!-- <label name="cholesterol">Enter your Cholesterol Level:</label> -->
                         <input type="number" name="Cholesterol" id="" placeholder="Cholesterol" required>
                     </div>
-                    <div class="col-5">
+                    <div class="col-12 col-md-5">
                         <!-- <label name="blood-pressure">Enter your Blood Pressure Level:</label> -->
                         <input type="number" name="Blood Pressure" id="" placeholder="Blood Pressure" required>
                     </div>
                 </div>
 
                 <div class="row justify-content-around">
-                    <div class="col-5">
+                    <div class="col-12 col-md-5">
                         <!-- <label name="heart-rate">Enter your Heart Rate:</label> -->
                         <input type="number" name="Heart Rate" id="" placeholder="Heart Rate" required>
                     </div>
-                    <div class="col-5">
+                    <div class="col-12 col-md-5">
                         <!-- <label name="blood-sugar">Enter your Blood Sugar Level:</label> -->
                         <input type="number" name="Blood Sugar" id="" placeholder="Blood Sugar Level" required>
                     </div>
                 </div>
                 <div class="row justify-content-around align-items-end">
-                    <div class="col-5">
+                    <div class="col-12 col-md-5">
                         <label name="age">Number of Exercise Hours:</label>
                         <input name="Exercise Hours" type="number" placeholder="Exercise Hours per week" required>
                     </div>
-                    <div class="col-5 slider">
+                    <div class="col-12 col-md-5 slider">
                         <div class="slider-label">
                             <div class="col-9"><label name="age">Scale your Stress Level: </label></div>
                             <div class="col-2">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-around text-center">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <label name="Smoking">Do you Smoke?</label><br>
                         <select name="Smoking" placeholder="" required>
                             <option value="select">Select an Option</option>
@@ -101,7 +101,7 @@
                             <option value="0">Current</option>
                         </select>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <label name="Alcohol Intake">Describe your Alcohol consumption</label><br>
                         <select name="Alcohol Intake" placeholder="" required>
                             <option value="select">Select an Option</option>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-around text-center">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <label name="Obesity_Yes">Are you Obese?</label><br>
                         <select name="Obesity_Yes" placeholder="" required>
                             <option value="select">Select an Option</option>
@@ -121,7 +121,7 @@
                         </select>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <label name="">Are you diabetic?</label><br>
                         <select name="Diabetes_Yes" placeholder="" required>
                             <option value="select">Select an Option</option>
@@ -143,34 +143,12 @@
                 <div class="submit">
                     <button class="submit m-auto" type="submit" data-toggle="modal" data-target="#exampleModal">Submit</button>
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Result</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                {{prediction_txt}}
-                            </div>
-                            <div class="modal-footer justify-content-center">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </form>
         </div>
 
-        <div class="row">
+        <div class="row pt-2">
             <div class="col">
-                <div class="text-center">{{prediction_txt}}</div>
+                <div class="text-center"><span class="prediction-txt">{{prediction_txt}}</span></div>
             </div>
         </div>
     </div>

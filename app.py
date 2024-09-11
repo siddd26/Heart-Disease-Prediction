@@ -13,17 +13,10 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     features = [int (x) for x in request.form.values()]
+    print(features)
     final_features = [np.array(features)]
-    print(final_features, '\n\n\n')
+    print(f"Input Features for the model: {final_features}")
     prediction = model.predict(final_features)
-
-    # data = request.get_json(force=True)
-
-    # # Create a Pandas DataFrame from the JSON data
-    # df = pd.DataFrame(data, index=[0])
-
-    # # Predict the output using your model
-    # prediction = model.predict(df)
 
     if prediction[0] == 1:
         output = "You are more likely to have a heart disease."
@@ -36,11 +29,15 @@ def predict():
 def predict_api():
     data = request.get_json(force=True)
     prediction = model.predict([np.array(list(data.values())).astype(int)])
-    print("\n\n" , prediction.dtype)
+    # print("\n\n" , prediction.dtype)
 
-    output = prediction[0]
-    return jsonify(output)
+    if prediction[0] == 1:
+        output = "You are more likely to have a heart disease."
+    else:
+        output = "You are less likely to have a heart disease."
+    return jsonify({'prediction': output})
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
+    # app.run(debug=True)

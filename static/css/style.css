@@ -6,7 +6,7 @@ form .row{
     margin: 2px;
     padding: 2px 10px;
 }
-.col-5 input, .col-5 select{
+.col-md-5 input, .col-md-5 select{
     width:100%;
     /* align-items: center; */
     /* margin: 0px 3px; */
@@ -27,10 +27,73 @@ form .row{
     margin-bottom: 0px;
 }
 
-form input, form select{
-
-    padding: 1px 2px;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
+
+input:not([type="range"]), select {
+    border: none; /* Remove the default border */
+    border-bottom: 2px solid blue; /* Blue bottom border */
+    border-radius: 10px; /* Rounded corners */
+    /* padding: 8px; Optional: add some padding for better appearance */
+    outline: none; /* Remove the outline when focused */
+    /* width: 100%; Optional: Adjust the width */
+    box-sizing: border-box; /* Ensure padding does not affect the element's width */
+    padding: 1px 5px;
+    background-color: rgb(228, 228, 254);
+    transition: box-shadow 0.3s ease, border-bottom 0.3s ease;
+}
+
+input:not([type="range"]):focus, select:focus {
+    border-bottom: 2px solid darkblue; /* Darker blue on focus */
+    box-shadow: 2px 4px 8px rgba(0, 0, 255, 0.2); /* Slight shadow effect */
+}
+
+input:not([type="range"]):hover, select:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3); /* Add subtle blue shadow on hover */
+}
+
+input::placeholder {
+    color: #999;
+    opacity: 0.8;
+}
+
+
+.prediction-txt{
+    /* display: inline-block; Keeps it a single-line div */
+    padding: 10px 20px; /* Padding for space inside the div */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 10px; /* Rounded corners */
+    /* position: relative; */
+    color: blue; /* Text color */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    animation: borderRotate 2s linear infinite; /* Infinite animation */
+}
+
+/* Animation for rotating the border */
+@keyframes borderRotate {
+    0% {
+        border-color: blue transparent transparent blue;
+    }
+    25% {
+        border-color: blue blue transparent transparent;
+    }
+    50% {
+        border-color: transparent blue blue transparent;
+    }
+    75% {
+        border-color: transparent transparent blue blue;
+    }
+    100% {
+        border-color: blue transparent transparent blue;
+    }
+
+}
+
 
 form .submit{
     display: flex;
@@ -40,4 +103,31 @@ form .submit{
 form .submit input{
     /* width: auto; */
     padding: 5px;
+}
+
+button {
+    background-color: white; /* Default background */
+    /* border: none; Remove default border */
+    border-radius: 10px!important;
+    border-width: 0px 2px 2px 0px;
+    border-style: solid;
+    border-color: blue; /* Blue bottom border */
+    padding: 10px 20px; /* Padding for better size */
+    font-size: 16px; /* Adjust text size */
+    color: blue; /* Text color */
+    cursor: pointer; /* Show pointer on hover */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect */
+button:hover {
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 255, 0.3); /* Blue shadow on hover */
+    background-color: #f0f8ff; /* Light blue background on hover */
+    border-color: darkblue; /* Darker blue bottom border on hover */
+}
+
+/* Focus effect */
+button:focus {
+    box-shadow: 0 6px 12px rgba(0, 0, 255, 0.4); /* More intense shadow on focus */
+    background-color: #e6f0ff; /* Slightly darker background on focus */
 }
